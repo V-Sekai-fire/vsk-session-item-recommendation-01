@@ -1,9 +1,74 @@
-```
-SPDX-License-Identifier: MIT
-Copyright (c) 2025-present K. S. Ernest (iFire) Lee
+# Movie Recommendation System with PinSage
+
+This repository contains a movie recommendation system built using the PinSage algorithm from the LibRecommender library. The system leverages collaborative filtering and graph-based techniques to provide personalized movie recommendations based on the MovieLens 20M dataset.
+
+## Features
+- **Graph-Based Recommendations**: Utilizes PinSage for item-to-item (i2i) recommendations.
+- **Multi-Value Feature Handling**: Processes multi-genre movie data using genre splitting.
+- **Chronological Split**: Splits dataset chronologically for realistic time-based evaluation.
+- **GPU Acceleration**: Supports TensorFlow GPU acceleration for faster training.
+- **Model Persistence**: Saves trained models for later inference.
+
+## Installation
+1. Clone the repository:
+```bash
+git clone https://github.com/your-username/movie-recommendation-pinsage.git
+cd movie-recommendation-pinsage
 ```
 
-# Linux or WSL Windows 11
+2. Install requirements:
+```bash
+pip install -r requirements.txt
+```
+
+## Requirements
+- Python 3.7+
+- pandas
+- tensorflow
+- libreco
+- requests
+- zipfile36
+
+## Usage
+1. Run the script:
+```bash
+python movie_recommendation.py
+```
+
+2. Expected Output:
+```
+• Automatic dataset download and extraction
+• Training logs with evaluation metrics (precision/recall)
+• Example prediction for user 1
+• Top 7 movie recommendations with titles
+```
+
+## Data Processing Pipeline
+1. Downloads MovieLens 20M dataset
+2. Merges ratings and movie metadata
+3. Normalizes ratings (0-1 scale)
+4. Processes multi-value genre features
+5. Creates chronological train/test split (80/20)
+
+## Model Configuration
+- **Algorithm**: PinSage (graph neural network)
+- **Task**: Ranking with max-margin loss
+- **Embedding Size**: 16
+- **Training**: 2 epochs, 16,384 batch size
+- **Negative Sampling**: 3 negatives per positive
+- **Graph Parameters**: 2 layers, 3 neighbors per node
+
+## License
+MIT License - See [LICENSE](LICENSE) for details.
+
+## Acknowledgments
+- MovieLens dataset from GroupLens Research
+- LibRecommender library
+- TensorFlow ecosystem
+
+This implementation demonstrates modern recommendation system techniques using graph neural networks, suitable for both educational purposes and as a foundation for production systems.
+
+## Seup on Linux or WSL
 
 ```
 "${SHELL}" <(curl -L micro.mamba.pm/install.sh)
