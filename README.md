@@ -15,24 +15,23 @@ This repository contains a movie recommendation system built using the PinSage a
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/movie-recommendation-pinsage.git
+git clone https://github.com/V-Sekai-fire/vsk-session-item-recommendation-01
 cd movie-recommendation-pinsage
 ```
 
-2. Install requirements:
+2. Install Mac or Linux requirements:
 
 ```bash
-pip install -r requirements.txt
+"${SHELL}" <(curl -L micro.mamba.pm/install.sh)
+source ~/.bashrc
+micromamba create -n pinsage python==3.12
+micromamba activate pinsage
+micromamba install llvm scipy requests scikit-learn transformers pandas
+pip3 install librecommender tf-keras tensorflow[and-cuda]
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
+python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+python3 movie_prediction.py
 ```
-
-## Requirements
-
-- Python 3.7+
-- pandas
-- tensorflow
-- libreco
-- requests
-- zipfile36
 
 ## Usage
 
@@ -79,17 +78,3 @@ MIT License - See [LICENSE](LICENSE) for details.
 - TensorFlow ecosystem
 
 This implementation demonstrates modern recommendation system techniques using graph neural networks, suitable for both educational purposes and as a foundation for production systems.
-
-## Seup on Linux or WSL
-
-```
-"${SHELL}" <(curl -L micro.mamba.pm/install.sh)
-source ~/.bashrc
-micromamba create -n pinsage python==3.12
-micromamba activate pinsage
-micromamba install llvm scipy requests scikit-learn transformers pandas
-pip3 install librecommender tf-keras tensorflow[and-cuda]
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
-python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
-python3 movie_prediction.py
-```
