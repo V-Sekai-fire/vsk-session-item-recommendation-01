@@ -85,7 +85,7 @@ assert "user" in data.columns and "time" in data.columns, (
 # Split the data into training and evaluation sets
 logger.info("Splitting data into training and evaluation sets...")
 train_data, test_data = split_by_ratio_chrono(
-    data, test_size=0.2
+    data, test_size=0.8
 )  # 0.95 for 20 minutes of training
 
 # Prepare the dataset for PinSage
