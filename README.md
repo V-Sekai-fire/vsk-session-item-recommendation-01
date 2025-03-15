@@ -44,6 +44,7 @@ python recommenda.py
 2. Expected Output:
 
 ```
+* 8 hours to train
 • Automatic dataset download and extraction
 • Training logs with evaluation metrics (precision/recall)
 • Example prediction for user 1
