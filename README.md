@@ -38,7 +38,7 @@ python3 movie_prediction.py
 1. Run the script:
 
 ```bash
-python movie_recommendation.py
+python recommenda.py
 ```
 
 2. Expected Output:
