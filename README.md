@@ -3,6 +3,7 @@
 This repository contains a movie recommendation system built using the PinSage algorithm from the LibRecommender library. The system leverages collaborative filtering and graph-based techniques to provide personalized movie recommendations based on the MovieLens 20M dataset.
 
 ## Features
+
 - **Graph-Based Recommendations**: Utilizes PinSage for item-to-item (i2i) recommendations.
 - **Multi-Value Feature Handling**: Processes multi-genre movie data using genre splitting.
 - **Chronological Split**: Splits dataset chronologically for realistic time-based evaluation.
@@ -10,18 +11,22 @@ This repository contains a movie recommendation system built using the PinSage a
 - **Model Persistence**: Saves trained models for later inference.
 
 ## Installation
+
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/your-username/movie-recommendation-pinsage.git
 cd movie-recommendation-pinsage
 ```
 
 2. Install requirements:
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ## Requirements
+
 - Python 3.7+
 - pandas
 - tensorflow
@@ -30,12 +35,15 @@ pip install -r requirements.txt
 - zipfile36
 
 ## Usage
+
 1. Run the script:
+
 ```bash
 python movie_recommendation.py
 ```
 
 2. Expected Output:
+
 ```
 • Automatic dataset download and extraction
 • Training logs with evaluation metrics (precision/recall)
@@ -44,6 +52,7 @@ python movie_recommendation.py
 ```
 
 ## Data Processing Pipeline
+
 1. Downloads MovieLens 20M dataset
 2. Merges ratings and movie metadata
 3. Normalizes ratings (0-1 scale)
@@ -51,6 +60,7 @@ python movie_recommendation.py
 5. Creates chronological train/test split (80/20)
 
 ## Model Configuration
+
 - **Algorithm**: PinSage (graph neural network)
 - **Task**: Ranking with max-margin loss
 - **Embedding Size**: 16
@@ -59,9 +69,11 @@ python movie_recommendation.py
 - **Graph Parameters**: 2 layers, 3 neighbors per node
 
 ## License
+
 MIT License - See [LICENSE](LICENSE) for details.
 
 ## Acknowledgments
+
 - MovieLens dataset from GroupLens Research
 - LibRecommender library
 - TensorFlow ecosystem
@@ -72,12 +84,12 @@ This implementation demonstrates modern recommendation system techniques using g
 
 ```
 "${SHELL}" <(curl -L micro.mamba.pm/install.sh)
-source ~/.bashrc 
-micromamba create -n pinsage python==3.12 
+source ~/.bashrc
+micromamba create -n pinsage python==3.12
 micromamba activate pinsage
 micromamba install llvm scipy requests scikit-learn transformers pandas
 pip3 install librecommender tf-keras tensorflow[and-cuda]
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
 python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
-python3 movie_prediction.py 
+python3 movie_prediction.py
 ```
