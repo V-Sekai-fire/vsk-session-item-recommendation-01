@@ -1,0 +1,78 @@
+input_features:
+  # User Features (static within a session)
+  - name: user
+    type: category
+    encoder:
+      type: embed
+      embedding_size: 32
+  - name: user_display_name
+    type: text
+    encoder:
+      type: bert
+      pretrained_model_name: ModernBert
+
+  # Item Metadata (contextual features)
+  - name: item
+    type: category
+    encoder:
+      type: embed
+      embedding_size: 64
+  - name: item_display_name
+    type: text
+    encoder:
+      type: bert
+      pretrained_model_name: ModernBert
+  - name: item_slug
+    type: text
+    encoder:
+      type: tf-idf
+  - name: item_xmp_rdf
+    type: text
+    encoder:
+      type: rnn
+  - name: item_scene_text
+    type: text
+    encoder:
+      type: bert
+      pretrained_model_name: ModernBert
+  - name: item_mesh_embedding
+    type: sequence
+    encoder:
+      type: dense
+  - name: item_image_embedding
+    type: sequence
+    encoder:
+      type: dense
+  - name: item_audio_embedding
+    type: sequence
+    encoder:
+      type: dense
+
+  # Item Sequence (dynamic user interactions)
+  - name: item_sequence
+    type: sequence
+    encoder:
+      type: embed
+      embedding_size: 64
+    tied: item # Shares embeddings with 'item' feature
+
+  # Interaction Context
+  - name: time
+    type: number
+
+combiner:
+  type: transformer
+  num_layers: 2
+  hidden_size: 128
+  num_heads: 4
+  dropout: 0.2
+
+output_features:
+  - name: next_item
+    type: category
+    dependencies:
+      - item_sequence
+      - user
+    loss:
+      type: softmax_cross_entropy
+    top_k: 10

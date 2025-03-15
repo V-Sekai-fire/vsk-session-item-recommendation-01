@@ -1,0 +1,70 @@
+input_features:
+  - name: user
+    type: category
+    encoder:
+      type: embed
+      embedding_size: 64
+  - name: godot_version
+    type: category
+  - name: gpu_vendor
+    type: category
+  - name: os_family
+    type: category
+
+  # Item Features
+  - name: item
+    type: category
+    encoder:
+      type: embed
+      embedding_size: 64
+  - name: display_name
+    type: text
+    encoder:
+      type: bert
+      pretrained_model_name: ModernBERT
+  - name: slug
+    type: text
+    encoder:
+      type: tf-idf
+  - name: xmp_rdf
+    type: text
+    encoder:
+      type: rnn
+  - name: scene_text
+    type: text
+    encoder:
+      type: bert
+      pretrained_model_name: ModernBERT
+  - name: mesh_embedding
+    type: sequence
+    encoder:
+      type: dense
+  - name: image_embedding
+    type: sequence
+    encoder:
+      type: dense
+  - name: audio_embedding
+    type: sequence
+    encoder:
+      type: dense
+
+  # Interaction Context
+  - name: time
+    type: number
+
+combiner:
+  type: concat
+  fc_layers:
+    - output_size: 256
+      activation: relu
+    - output_size: 128
+      activation: relu
+  dropout: 0.3
+
+output_features:
+  - name: label
+    type: number
+    loss:
+      type: mean_squared_error
+    num_fc_layers: 1
+    activation: sigmoid
