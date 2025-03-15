@@ -38,7 +38,7 @@ python3 movie_prediction.py
 1. Run the script:
 
 ```bash
-python recommenda.py # Try decreasing the train/test split to 0.95 for faster results and worse performance.
+python recommend.py # Try decreasing the train/test split to 0.95 for faster results and worse performance.
 ```
 
 2. Expected Output:
