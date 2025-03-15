@@ -55,10 +55,6 @@ data.rename(
     inplace=True,
 )
 
-# Normalize the label to a range from 0 to 1
-max_label = data["label"].max()
-data["label"] = data["label"] / max_label
-
 sparse_col = ["genres_1", "genres_2", "genres_3"]
 dense_col = []
 multi_value_col = ["genres"]
